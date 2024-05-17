@@ -88,24 +88,26 @@ spaceship::section::render() {
   if [[ "$_spaceship_prompt_opened" == true || "$_spaceship_rprompt_opened" == true ]] \
   && [[ "$SPACESHIP_PROMPT_PREFIXES_SHOW" == true ]] \
   && [[ -n "$prefix" ]]; then
-    result+="%{%B%}" # set bold
+    # result+="%{%B%}" # set bold
     result+="$prefix"
-    result+="%{%b%}" # unset bold
+    # result+="%{%b%}" # unset bold
   fi
 
   _spaceship_prompt_opened=true
   _spaceship_rprompt_opened=true
 
   # TODO: Decouple symbol and context when formatting will be introduced
-  result+="%{%B$color%}"    # set color
+  # result+="%{%B$color%}"    # set color
+  result+="%{$color%}"    # set color
   result+="$symbol$content" # section content
-  result+="%{%b%f%}"        # unset color
+  result+="%{%f%}"        # unset color
+  # result+="%{%b%f%}"        # unset color
 
   if [[ "$SPACESHIP_PROMPT_SUFFIXES_SHOW" == true ]] \
   && [[ -n "$suffix" ]]; then
-    result+="%{%B%}" # reset bold, if it was diabled before
+    # result+="%{%B%}" # reset bold, if it was diabled before
     result+="$suffix"
-    result+="%{%b%}" # unset bold
+    # result+="%{%b%}" # unset bold
   fi
 
   echo -n "$result"
